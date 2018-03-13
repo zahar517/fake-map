@@ -9,7 +9,11 @@ const Wrapper = styled.div`
 `;
 
 const Sidebar = styled.div`
-  flex: 0 0 25vw;
+  flex: 0 0 20rem;
+`;
+
+const MapWrapper = styled.div`
+  flex: auto;
 `;
 
 export const App = () => (
@@ -17,7 +21,9 @@ export const App = () => (
     <Sidebar>
       <UserList />
     </Sidebar>
-    <Map />
+    <MapWrapper>
+      <Map />
+    </MapWrapper>
   </Wrapper>
 );
 

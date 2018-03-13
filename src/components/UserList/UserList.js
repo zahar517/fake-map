@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { fetchUsersRequest } from "../../actions/users";
+import { fetchUsersRequest, selectUser } from "../../actions/users";
 import { getError, getIsLoading, getUsers } from "../../reducers/users";
 import UserCard from "../UserCard";
 
@@ -20,18 +20,31 @@ export class UserList extends PureComponent {
     error: null,
     isLoading: false,
     fetchUsersRequest: () => null,
+    selectUser: () => null,
   };
 
   componentDidMount() {
     this.props.fetchUsersRequest();
   }
 
+  selectCurrentUser = id => {
+    this.props.selectUser(id);
+  };
+
   render() {
     const { users } = this.props;
 
     if (users.length) {
       return (
-        <List>{users.map(user => <UserCard key={user.id} user={user} />)}</List>
+        <List onClick={this.clickUserList}>
+          {users.map(user => (
+            <UserCard
+              key={user.id}
+              user={user}
+              selectCurrentUser={this.selectCurrentUser}
+            />
+          ))}
+        </List>
       );
     } else {
       return null;
@@ -45,5 +58,5 @@ export default connect(
     error: getError(state),
     isLoading: getIsLoading(state),
   }),
-  { fetchUsersRequest }
+  { fetchUsersRequest, selectUser }
 )(UserList);

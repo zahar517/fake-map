@@ -5,8 +5,10 @@ const Wrapper = styled.li`
   display: flex;
   align-items: center;
   padding: 0.5rem 1rem;
-  & + & {
-    border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  &:hover {
+    background-color: #eee;
   }
 `;
 
@@ -30,19 +32,24 @@ const UserInfo = styled.div`
 const UserName = styled.div``;
 const UserEmail = styled.div``;
 
-export const UserCard = ({ user }) => (
-  <Wrapper>
-    <AvatarWrapper>
-      <Avatar src={user.properties.avatar} alt="avatar" />
-    </AvatarWrapper>
-    <UserInfo>
-      <UserName>
-        <b>Name:</b> {user.properties.userName}
-      </UserName>
-      <UserEmail>
-        <b>Email:</b> {user.properties.email}
-      </UserEmail>
-    </UserInfo>
-  </Wrapper>
-);
+export const UserCard = ({ user, selectCurrentUser }) => {
+  const selectUser = () => selectCurrentUser(user.id);
+
+  return (
+    <Wrapper onClick={selectUser}>
+      <AvatarWrapper>
+        <Avatar src={user.properties.avatar} alt="avatar" />
+      </AvatarWrapper>
+      <UserInfo>
+        <UserName>
+          <b>Name:</b> {user.properties.userName}
+        </UserName>
+        <UserEmail>
+          <b>Email:</b> {user.properties.email}
+        </UserEmail>
+      </UserInfo>
+    </Wrapper>
+  );
+};
+
 export default UserCard;
