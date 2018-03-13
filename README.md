@@ -8,6 +8,19 @@
 * При клике на пользователя в колонке (sidebar), зумировать карту на этого пользователя и отображать Pop-up.
 * Так же плюсом будет написание тестов.
 
+## Технологии
+
+* create-react-app
+* React.js
+* redux
+* redux-saga
+* redux-actions
+* styled-components
+* axios
+* lodash
+* Jest
+* Enzyme
+
 ### Установите модули локально
 
 ```shell
