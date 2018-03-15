@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { fetchUsersRequest, selectUser } from "../../actions/users";
 import { getError, getIsLoading, getUsers } from "../../reducers/users";
 import UserCard from "../UserCard";
+import Loader from "../Loader";
+import Error from "../Error";
 
 const List = styled.ul`
   list-style: none;
@@ -32,23 +34,23 @@ export class UserList extends PureComponent {
   };
 
   render() {
-    const { users } = this.props;
+    const { users, isLoading, error } = this.props;
 
-    if (users.length) {
-      return (
-        <List onClick={this.clickUserList}>
-          {users.map(user => (
-            <UserCard
-              key={user.id}
-              user={user}
-              selectCurrentUser={this.selectCurrentUser}
-            />
-          ))}
-        </List>
-      );
-    } else {
-      return null;
-    }
+    if (isLoading) return <Loader />;
+    if (error) return <Error>Sorry! Try again later</Error>;
+    if (!users.length) return null;
+
+    return (
+      <List onClick={this.clickUserList}>
+        {users.map(user => (
+          <UserCard
+            key={user.id}
+            user={user}
+            selectCurrentUser={this.selectCurrentUser}
+          />
+        ))}
+      </List>
+    );
   }
 }
 

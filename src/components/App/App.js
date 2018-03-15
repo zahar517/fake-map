@@ -10,6 +10,7 @@ const Wrapper = styled.div`
 
 const Sidebar = styled.div`
   flex: 0 0 20rem;
+  position: relative;
 `;
 
 const MapWrapper = styled.div`

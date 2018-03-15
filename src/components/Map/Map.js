@@ -104,7 +104,7 @@ class MapSection extends Component {
   render() {
     return (
       <div
-        style={{ height: "100%", width: "100%" }}
+        style={{ height: "100%", width: "100%", backgroundColor: '#aad3df' }}
         ref={div => {
           this.element = div;
         }}
