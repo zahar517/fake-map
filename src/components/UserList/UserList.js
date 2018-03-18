@@ -41,7 +41,7 @@ export class UserList extends PureComponent {
     if (!users.length) return null;
 
     return (
-      <List onClick={this.clickUserList}>
+      <List>
         {users.map(user => (
           <UserCard
             key={user.id}

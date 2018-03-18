@@ -19,7 +19,7 @@ const AvatarWrapper = styled.div`
   height: 3rem;
 `;
 
-const Avatar = styled.img`
+export const Avatar = styled.img`
   display: block;
   width: 100%;
 `;
